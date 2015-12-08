@@ -19,9 +19,9 @@ def check_center(val):
             return False
     return True #common point was found
 ok = -1
-center.value = np.zeros(n) #first iteration is obvious
+val = np.zeros(n) #first iteration is obvious
 for i in range(100): #prevent infinite loop
-    val = np.asarray(np.transpose(center.value))[0]
+    if i > 0: val = np.asarray(np.transpose(center.value))[0]
     if check_center(val): ok = 1; break #yeah!
     obj = cvx.Maximize(obj_func)
     prob = cvx.Problem(obj, constr)
